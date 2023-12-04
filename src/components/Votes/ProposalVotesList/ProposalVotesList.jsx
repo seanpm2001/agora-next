@@ -7,15 +7,23 @@ import { VStack, HStack } from "@/components/Layout/Stack";
 import HumanAddress from "@/components/shared/HumanAddress";
 import TokenAmountDisplay from "@/components/shared/TokenAmountDisplay";
 import Image from "next/image";
+import { HoveredVoter } from "@/components/Proposals/ProposalPage/HoveredVoter/HoveredVoter";
 
 export default function ProposalVotesList({
   initialProposalVotes,
   fetchVotesForProposal,
   proposal_id,
+  fetchDelegate,
 }) {
   const fetching = React.useRef(false);
   const [pages, setPages] = React.useState([initialProposalVotes] || []);
   const [meta, setMeta] = React.useState(initialProposalVotes.meta);
+  const [hoveredVoterAddress, setHoveredVoterAddressValue] =
+    React.useState(null);
+  const [isPending, startTransition] = React.useTransition();
+  function setHoveredVoterAddress(value) {
+    startTransition(() => setHoveredVoterAddressValue(value));
+  }
 
   const loadMore = async (page) => {
     if (!fetching.current && meta.hasNextPage) {
@@ -35,6 +43,12 @@ export default function ProposalVotesList({
 
   return (
     <div className={styles.vote_container}>
+      {/* Show the hovered voter if there is one */}
+      <HoveredVoter
+        hoveredVoterAddress={hoveredVoterAddress}
+        fetchDelegate={fetchDelegate}
+        isPending={isPending}
+      />
       <InfiniteScroll
         hasMore={meta.hasNextPage}
         pageStart={0}
@@ -53,22 +67,32 @@ export default function ProposalVotesList({
         {proposalVotes.map((vote, i) => (
           <VStack key={`vote_${i}`} gap={1} className={styles.vote_row}>
             <VStack>
-              <HStack justifyContent="justify-between" className={styles.voter}>
-                <HStack gap={1} alignItems="items-center">
-                  <HumanAddress address={vote.address} />
-                </HStack>
+              <div
+                onMouseEnter={() => {
+                  console.log("onMouseEnter", vote.address);
+                  setHoveredVoterAddress(vote.address);
+                }}
+              >
                 <HStack
-                  gap={1}
-                  alignItems="items-center"
-                  className={styles.vote_weight}
+                  justifyContent="justify-between"
+                  className={styles.voter}
                 >
-                  <TokenAmountDisplay
-                    amount={vote.weight}
-                    decimals={18}
-                    currency="OP"
-                  />
+                  <HStack gap={1} alignItems="items-center">
+                    <HumanAddress address={vote.address} />
+                  </HStack>
+                  <HStack
+                    gap={1}
+                    alignItems="items-center"
+                    className={styles.vote_weight}
+                  >
+                    <TokenAmountDisplay
+                      amount={vote.weight}
+                      decimals={18}
+                      currency="OP"
+                    />
+                  </HStack>
                 </HStack>
-              </HStack>
+              </div>
             </VStack>
             <pre className={styles.vote_reason}>{vote.reason}</pre>
           </VStack>

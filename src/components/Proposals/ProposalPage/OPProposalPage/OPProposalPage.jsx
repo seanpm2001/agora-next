@@ -7,6 +7,7 @@ import { getVotesForProposal } from "@/app/api/votes/getVotes";
 import CastVoteInput from "@/components/Votes/CastVoteInput/CastVoteInput";
 import { getVotingPowerAtSnapshot } from "@/app/api/voting-power/getVotingPower";
 import { getAuthorityChains } from "@/app/api/authority-chains/getAuthorityChains";
+import { getDelegate } from "@/app/api/delegates/getDelegates";
 
 async function fetchProposalVotes(proposal_id, page = 1) {
   "use server";
@@ -30,6 +31,14 @@ async function fetchAuthorityChains(address, blockNumber) {
 
   return {
     chains: await getAuthorityChains({ blockNumber, address }),
+  };
+}
+
+async function fetchDelegate(addressOrENSName) {
+  "use server";
+
+  return {
+    delegate: await getDelegate({ addressOrENSName }),
   };
 }
 
@@ -58,6 +67,7 @@ export default async function OPProposalPage({ proposal }) {
             initialProposalVotes={proposalVotes}
             fetchVotesForProposal={fetchProposalVotes}
             proposal_id={proposal.id}
+            fetchDelegate={fetchDelegate}
           />
           {/* Show the input for the user to vote on a proposal if allowed */}
           <CastVoteInput

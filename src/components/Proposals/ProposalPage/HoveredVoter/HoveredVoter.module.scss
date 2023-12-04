@@ -1,0 +1,7 @@
+@import "@/styles/variables.scss";
+
+.card_container {
+  position: absolute;
+  width: calc(100% - 2 * $spacing-4);
+  right: calc(100% + $spacing-4);
+}
