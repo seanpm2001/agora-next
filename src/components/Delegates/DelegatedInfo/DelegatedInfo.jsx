@@ -52,7 +52,7 @@ import { icons } from "@/assets/icons/icons";
 
 export default function DelegatedInfo() {
   return (
-    <Tabs defaultValue="delegatedFrom">
+    <Tabs className="my-10" defaultValue="delegatedFrom">
       <HStack className="justify-between align-center">
         <TabsList>
           <TabsTrigger value="delegatedFrom">Delegated from</TabsTrigger>

@@ -12,6 +12,7 @@ import DelegateStatement from "@/components/Delegates/DelegateStatement/Delegate
 import { getDelegate } from "@/app/api/delegates/getDelegates";
 import { getVotesForDelegate } from "@/app/api/votes/getVotes";
 import { getStatment } from "@/app/api/statements/getStatements";
+import DelegatedInfo from "@/components/Delegates/DelegatedInfo/DelegatedInfo";
 import DelegateVotesProvider from "@/contexts/DelegateVotesContext";
 import ResourceNotFound from "@/components/shared/ResourceNotFound/ResourceNotFound";
 
@@ -74,6 +75,8 @@ export default async function Page({ params: { addressOrENSName } }) {
           {statement && statement.delegateStatement && (
             <DelegateStatement statement={statement.delegateStatement} />
           )}
+
+          <DelegatedInfo />
 
           {delegateVotes && (
             <div className="flex flex-col gap-4">
