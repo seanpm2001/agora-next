@@ -47,6 +47,49 @@ export const scrollTenantUIConfig = new TenantUI({
     brandSecondary: "#F2F2F2",
   },
 
+  governanceIssues: [
+    {
+      icon: "wrenchScrewdriverIcon",
+      title: "Builders",
+      key: "builders",
+    },
+    {
+      icon: "community",
+      title: "Community",
+      key: "community",
+    },
+    {
+      icon: "globeAlt",
+      title: "Decentralization",
+      key: "decentralization",
+    },
+    {
+      icon: "presentationChartLine",
+      title: "Ecosystem Growth",
+      key: "ecosystemGrowth",
+    },
+    {
+      icon: "scale",
+      title: "Governance",
+      key: "governance",
+    },
+    {
+      icon: "codeBracketSquare",
+      title: "Protocol",
+      key: "protocol",
+    },
+    {
+      icon: "beaker",
+      title: "Research & Development",
+      key: "researchDevelopment",
+    },
+    {
+      icon: "shieldCheck",
+      title: "Security",
+      key: "security",
+    },
+  ],
+
   pages: [
     {
       route: "/",
@@ -148,11 +191,15 @@ export const scrollTenantUIConfig = new TenantUI({
     },
     {
       name: "delegates/endorsed-filter",
-      enabled: true,
+      enabled: false,
     },
     {
       name: "delegates/edit",
       enabled: true,
+    },
+    {
+      name: "delegates/delegate",
+      enabled: false,
     },
     {
       name: "delegates/code-of-conduct",

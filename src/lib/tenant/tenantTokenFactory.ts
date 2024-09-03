@@ -40,7 +40,7 @@ export default class TenantTokenFactory {
       case TENANT_NAMESPACES.SCROLL:
         return {
           name: "Scroll",
-          symbol: "SCROLL",
+          symbol: "SCR",
           decimals: 18,
         };
       default:
