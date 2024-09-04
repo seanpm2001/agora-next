@@ -203,7 +203,7 @@ export const scrollTenantUIConfig = new TenantUI({
     },
     {
       name: "delegates/code-of-conduct",
-      enabled: true,
+      enabled: false,
     },
     {
       name: "info",
