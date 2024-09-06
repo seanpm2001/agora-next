@@ -8,7 +8,7 @@ import { TenantContracts } from "@/lib/types";
 import { scroll } from "viem/chains";
 
 import { IGovernorContract } from "@/lib/contracts/common/interfaces/IGovernorContract";
-import { JsonRpcProvider } from "ethers";
+import { FallbackProvider, JsonRpcProvider } from "ethers";
 import { ZERO_ADDRESS } from "@/lib/constants";
 
 interface Props {
@@ -23,9 +23,24 @@ export const scrollTenantContractConfig = ({
   const TOKEN = ZERO_ADDRESS;
   const GOVERNOR = ZERO_ADDRESS;
   const TREASURY = ZERO_ADDRESS;
-  const provider = new JsonRpcProvider(
-    `https://scroll-mainnet.g.alchemy.com/v2/${alchemyId}`
-  );
+
+  const provider = new FallbackProvider([
+    {
+      provider: new JsonRpcProvider(
+        `https://scroll-mainnet.g.alchemy.com/v2/${alchemyId}`
+      ),
+      priority: 1,
+      stallTimeout: 1500,
+      weight: 1,
+    },
+    {
+      provider: new JsonRpcProvider(`https://rpc.scroll.io/`),
+      priority: 2,
+      stallTimeout: 1500,
+      weight: 1,
+    },
+  ]);
+
   const chain = scroll;
 
   return {
