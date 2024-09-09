@@ -66,8 +66,13 @@ export const scrollTenantUIConfig = new TenantUI({
     },
     {
       icon: "presentationChartLine",
-      title: "Ecosystem Growth",
-      key: "ecosystemGrowth",
+      title: "Sustainability",
+      key: "sustainability",
+    },
+    {
+      icon: "lockClosed",
+      title: "Privacy",
+      key: "privacy",
     },
     {
       icon: "scale",
@@ -75,14 +80,9 @@ export const scrollTenantUIConfig = new TenantUI({
       key: "governance",
     },
     {
-      icon: "codeBracketSquare",
-      title: "Protocol",
-      key: "protocol",
-    },
-    {
       icon: "beaker",
-      title: "Research & Development",
-      key: "researchDevelopment",
+      title: "Experimentation",
+      key: "experimentation",
     },
     {
       icon: "shieldCheck",
