@@ -307,7 +307,7 @@ export const updateBallotProjectPosition = cache(
 const updateAllProjectsInBallotApi = async (
   projects: {
     project_id: string;
-    allocation: string;
+    allocation: string | null;
     impact: number;
   }[],
   category: string,
@@ -332,16 +332,16 @@ async function updateAllProjectsInBallotForAddress({
 }: {
   projects: {
     project_id: string;
-    allocation: string;
+    allocation: string | null;
     impact: number;
   }[];
   category: string;
   roundId: number;
   address: string;
 }) {
-  const categoryProjects = await prisma.mockProjects.findMany({
+  const categoryProjects = await prisma.projectApplicants.findMany({
     where: {
-      category_slug: category,
+      application_category: category,
     },
   });
 
@@ -349,7 +349,8 @@ async function updateAllProjectsInBallotForAddress({
   const isValid =
     projects.every((project) =>
       categoryProjects.some(
-        (categoryProject) => categoryProject.id === project.project_id
+        (categoryProject) =>
+          categoryProject.application_id === project.project_id
       )
     ) && projects.length === categoryProjects.length;
 
@@ -397,7 +398,7 @@ async function updateAllProjectsInBallotForAddress({
           project_id: project.project_id,
           round: roundId,
           address,
-          allocation: project.allocation,
+          allocation: project.impact ? project.allocation : null,
           impact: project.impact,
           rank: (500_000 / projects.length) * (i + 1),
         },
