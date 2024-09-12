@@ -35,15 +35,15 @@ export const scrollTenantUIConfig = new TenantUI({
   },
 
   customization: {
-    primary: "25 6 2",
-    secondary: "117 106 103",
-    tertiary: "209 205 204",
+    primary: "16 16 16",
+    secondary: "91 91 91",
+    tertiary: "164 164 164",
     neutral: "255 255 255",
-    wash: "250 242 232",
-    line: "241 217 185",
-    positive: "0 153 43",
-    negative: "197 47 0",
-    brandPrimary: "255 105 74",
+    wash: "255 255 255",
+    line: "220 220 220",
+    positive: "15 142 126",
+    negative: "255 104 75",
+    brandPrimary: "255 104 75",
     brandSecondary: "255 248 243",
     font: "TransSansPremium",
   },
@@ -94,9 +94,9 @@ export const scrollTenantUIConfig = new TenantUI({
   pages: [
     {
       route: "/",
-      title: "Welcome to the home of Scroll voters",
+      title: "Welcome to scroll governance",
       description:
-        "Scroll delegates are the stewards of Scroll DAO. They are volunteers and members of the Scroll community who have been elected to represent other token holders and make governance decisions on their behalf.",
+        "Delegates represent the Scroll ecosystem, guiding governance decisions on behalf of SCR token holders to ensure the platform evolves in line with community priorities.",
       hero: scrollHero,
       meta: {
         title: "Welcome to Scroll governance",
@@ -137,7 +137,7 @@ export const scrollTenantUIConfig = new TenantUI({
       title: "About Scroll",
       hero: infoPageHero,
       description:
-        "Scroll is a Layer 2 blockchain designed for social applications. Scroll facilitates the creation of more engaging and meaningful web3 experiences by enabling onchain dapps to integrate social features. The Scroll ecosystem, its technology, and associated protocols are governed by Scroll DAO, which is composed of SCROLL token stakers and delegates.",
+        "Scroll is the leading zero-knowledge rollup. As the homepage of the multichain world, Scroll leverages fast finality and interoperability to create a more accessible, scalable, and secure ecosystem for everyone. Our mission is to provide an easy-to-use, developer-friendly environment that embraces the inevitable multichain future. Scroll empowers builders to ascend beyond today’s limitations with a scalable, secure platform to serve billions of users and drive real-world impact.",
       meta: {
         title: "Info of Agora",
         description: "Welcome to the Scroll DAO",
@@ -147,9 +147,9 @@ export const scrollTenantUIConfig = new TenantUI({
     },
     {
       route: "info",
-      title: "Welcome to the Community",
+      title: "Welcome to Scroll Governance",
       description:
-        "Agora is the home of Scroll DAO  governance, where Scroll stakers delegate, vote, and make decisions to steward the future of the Scroll ecosystem.",
+        "Delegates represent the Scroll ecosystem, guiding governance decisions on behalf of SCR token holders to ensure the platform evolves in line with community priorities.",
       meta: {
         title: "Scroll Agora",
         description: "Home of Scroll governance",
@@ -160,25 +160,25 @@ export const scrollTenantUIConfig = new TenantUI({
         {
           name: "Community Discord",
           title: "Community Discord",
-          url: "https://discord.com/invite/buildoncyber",
+          url: "https://discord.gg/scroll",
           image: infoPageCard01,
         },
         {
           name: "Governance Forums",
           title: "Governance Forums",
-          url: "https://forum.cyber.co",
+          url: "https://gov.scroll.io/forum",
           image: infoPageCard02,
         },
         {
-          name: "Protocol Docs",
-          title: "Protocol Docs",
-          url: "https://docs.cyber.co/build-on-cyber/contract-deployment",
+          name: "Governance Docs",
+          title: "Governance Docs",
+          url: "https://gov.scroll.io/docs",
           image: infoPageCard03,
         },
         {
           name: "Protocol Vision",
           title: "Protocol Vision",
-          url: "https://docs.cyber.co",
+          url: "",
           image: infoPageCard04,
         },
       ],
