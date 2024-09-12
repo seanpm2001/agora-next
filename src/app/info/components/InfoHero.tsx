@@ -15,7 +15,7 @@ export const InfoHero = () => {
   return (
     <div className="flex flex-row mt-10 gap-11 flex-wrap sm:flex-nowrap">
       <div className="flex flex-col">
-        <h1 className="text-4xl sm:text-[56px] sm:leading-[67px] font-black text-black">
+        <h1 className="text-4xl sm:text-[56px] sm:leading-[60px] font-black text-black">
           {page!.title}
         </h1>
         <p className="text-base font-medium text-gray-4f mt-2 sm:mt-0 ">
@@ -59,7 +59,7 @@ const Card = ({
 }) => {
   return (
     <div
-      className={`p-1.5 w-full sm:w-32  bg-white border border-gray-300 rounded-[6px] shadow-[0px_3.044px_9.131px_0px_rgba(0,0,0,0.02),0px_1.522px_1.522px_0px_rgba(0,0,0,0.03)]} ${className}`}
+      className={`p-1.5 w-full sm:w-32 h-40 bg-white border border-gray-300 rounded-[6px] shadow-[0px_3.044px_9.131px_0px_rgba(0,0,0,0.02),0px_1.522px_1.522px_0px_rgba(0,0,0,0.03)]} ${className}`}
     >
       <Image src={image} className="w-full" width={106} height={106} alt="" />
       <Link
