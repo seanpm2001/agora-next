@@ -12,7 +12,7 @@ import infoPageCard04 from "@/assets/tenant/scroll_info_4.png";
 import infoPageHero from "@/assets/tenant/scroll_info_hero.png";
 
 export const scrollTenantUIConfig = new TenantUI({
-  title: "Scroll Agora",
+  title: "Scroll governance",
   logo: scrollLogo,
 
   googleAnalytics: "G-SV1E7HY7YZ",
@@ -47,6 +47,14 @@ export const scrollTenantUIConfig = new TenantUI({
     brandSecondary: "255 248 243",
     font: "TransSansPremium",
   },
+
+  links: [
+    {
+      name: "agora",
+      title: "Powered by Agora",
+      url: "https://agora.xyz",
+    },
+  ],
 
   governanceIssues: [
     {
