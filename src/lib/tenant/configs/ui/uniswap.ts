@@ -214,5 +214,9 @@ export const uniswapTenantUIConfig = new TenantUI({
       name: "info/governance-charts",
       enabled: true,
     },
+    {
+      name: "proposal-execute",
+      enabled: true,
+    },
   ],
 });

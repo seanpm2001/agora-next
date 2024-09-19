@@ -31,11 +31,17 @@ export const ProposalExecuteButton = ({ proposal }: Props) => {
   const proposalData =
     proposal.proposalData as ParsedProposalData[typeof dynamicProposalType]["kind"];
 
+  // TODO: Abstract this logic into a hook or a contract call
+  // Agora - getMinDelay
+  // Uniswap - delay
+
   const { data: executionDelayInBlocks } = useContractRead({
     address: contracts.timelock!.address as `0x${string}`,
     abi: contracts.timelock!.abi,
     functionName: "getMinDelay",
   });
+
+
 
   let canExecute = false;
   const delayInSeconds = blocksToSeconds(Number(executionDelayInBlocks));
@@ -43,7 +49,7 @@ export const ProposalExecuteButton = ({ proposal }: Props) => {
 
   if (proposal.queuedTime) {
     const queuedTimeInSeconds = Math.floor(
-      (proposal.queuedTime as Date).getTime() / 1000
+      (proposal.queuedTime as Date).getTime() / 1000,
     );
     executeTimeInSeconds = queuedTimeInSeconds + delayInSeconds;
     const currentTimeInSeconds = Math.floor(Date.now() / 1000);
@@ -71,7 +77,7 @@ export const ProposalExecuteButton = ({ proposal }: Props) => {
     if (isSuccess) {
       toast.success(
         "Proposal Executed. It might take a minute to see the updated status.",
-        { duration: 10000 }
+        { duration: 10000 },
       );
     }
     if (isError) {

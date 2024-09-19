@@ -12,4 +12,5 @@ export { OptimismGovernor__factory } from "./OptimismGovernor__factory";
 export { ProposalTypesConfigurator__factory } from "./ProposalTypesConfigurator__factory";
 export { UniswapGovernor__factory } from "./UniswapGovernor__factory";
 export { UniswapStaker__factory } from "./UniswapStaker__factory";
+export { UniswapTimelock__factory } from "./UniswapTimelock__factory";
 export { VotableSupplyOracle__factory } from "./VotableSupplyOracle__factory";

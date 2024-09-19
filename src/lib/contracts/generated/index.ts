@@ -12,6 +12,7 @@ export type { OptimismGovernor } from "./OptimismGovernor";
 export type { ProposalTypesConfigurator } from "./ProposalTypesConfigurator";
 export type { UniswapGovernor } from "./UniswapGovernor";
 export type { UniswapStaker } from "./UniswapStaker";
+export type { UniswapTimelock } from "./UniswapTimelock";
 export type { VotableSupplyOracle } from "./VotableSupplyOracle";
 export * as factories from "./factories";
 export { AgoraGovernor__factory } from "./factories/AgoraGovernor__factory";
@@ -25,4 +26,5 @@ export { OptimismGovernor__factory } from "./factories/OptimismGovernor__factory
 export { ProposalTypesConfigurator__factory } from "./factories/ProposalTypesConfigurator__factory";
 export { UniswapGovernor__factory } from "./factories/UniswapGovernor__factory";
 export { UniswapStaker__factory } from "./factories/UniswapStaker__factory";
+export { UniswapTimelock__factory } from "./factories/UniswapTimelock__factory";
 export { VotableSupplyOracle__factory } from "./factories/VotableSupplyOracle__factory";
