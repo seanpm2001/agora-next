@@ -5,7 +5,6 @@ import delegateImage from "@/assets/tenant/scroll_delegate.svg";
 import successImage from "@/assets/tenant/scroll_success.svg";
 import pendingImage from "@/assets/tenant/scroll_pending.svg";
 import failedImage from "@/assets/tenant/scroll_failed.svg";
-import infoPageCard01 from "@/assets/tenant/scroll_info_1.png";
 import infoPageCard02 from "@/assets/tenant/scroll_info_2.png";
 import infoPageCard03 from "@/assets/tenant/scroll_info_3.png";
 import infoPageCard04 from "@/assets/tenant/scroll_info_4.png";
@@ -166,12 +165,6 @@ export const scrollTenantUIConfig = new TenantUI({
       },
       links: [
         {
-          name: "Community Discord",
-          title: "Community Discord",
-          url: "https://discord.gg/scroll",
-          image: infoPageCard01,
-        },
-        {
           name: "Governance Forums",
           title: "Governance Forums",
           url: "https://gov.scroll.io/forum",
@@ -208,7 +201,7 @@ export const scrollTenantUIConfig = new TenantUI({
     },
     {
       name: "delegates/delegate",
-      enabled: false,
+      enabled: true,
     },
     {
       name: "delegates/code-of-conduct",
