@@ -1,11 +1,5 @@
 import { Proposal } from "@/app/api/common/proposals/proposal";
-import Tenant from "@/lib/tenant/tenant";
-import {
-  useAccount,
-  useContractRead,
-  useContractWrite,
-  useWaitForTransaction,
-} from "wagmi";
+import { useWaitForTransaction } from "wagmi";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -19,40 +13,27 @@ import { keccak256 } from "viem";
 import { toUtf8Bytes } from "ethers";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useExecuteCancel } from "@/app/proposals/components/useExecuteCancel";
+import { useCanCancel } from "@/app/proposals/components/useCanCancel";
 
 interface Props {
   proposal: Proposal;
 }
 
 export const ProposalCancelButton = ({ proposal }: Props) => {
-  const { contracts } = Tenant.current();
-  const { address } = useAccount();
+  const { data: adminAddress, canCancel } = useCanCancel();
 
-  const { data: adminAddress, isFetched: isAdminFetched } = useContractRead({
-    address: contracts.governor.address as `0x${string}`,
-    abi: contracts.governor.abi,
-    functionName: "admin",
-  });
-
-  const canCancel =
-    isAdminFetched &&
-    adminAddress?.toString().toLowerCase() === address?.toLowerCase();
   const dynamicProposalType: keyof ParsedProposalData =
     proposal.proposalType as keyof ParsedProposalData;
   const proposalData =
     proposal.proposalData as ParsedProposalData[typeof dynamicProposalType]["kind"];
 
-  const { data, write } = useContractWrite({
-    address: contracts.governor.address as `0x${string}`,
-    abi: contracts.governor.abi,
-    functionName: "cancel",
-    args: [
-      "options" in proposalData ? proposalData.options[0].targets : "",
-      "options" in proposalData ? proposalData.options[0].values : "",
-      "options" in proposalData ? proposalData.options[0].calldatas : "",
-      keccak256(toUtf8Bytes(proposal.description!)),
-    ],
-  });
+  const { data, write } = useExecuteCancel([
+    "options" in proposalData ? proposalData.options[0].targets : "",
+    "options" in proposalData ? proposalData.options[0].values : "",
+    "options" in proposalData ? proposalData.options[0].calldatas : "",
+    keccak256(toUtf8Bytes(proposal.description!)),
+  ]);
 
   const { isLoading, isSuccess, isError, isFetched, error } =
     useWaitForTransaction({

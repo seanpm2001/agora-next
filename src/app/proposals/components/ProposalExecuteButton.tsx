@@ -41,15 +41,13 @@ export const ProposalExecuteButton = ({ proposal }: Props) => {
     functionName: "getMinDelay",
   });
 
-
-
   let canExecute = false;
   const delayInSeconds = blocksToSeconds(Number(executionDelayInBlocks));
   let executeTimeInSeconds = 0;
 
   if (proposal.queuedTime) {
     const queuedTimeInSeconds = Math.floor(
-      (proposal.queuedTime as Date).getTime() / 1000,
+      (proposal.queuedTime as Date).getTime() / 1000
     );
     executeTimeInSeconds = queuedTimeInSeconds + delayInSeconds;
     const currentTimeInSeconds = Math.floor(Date.now() / 1000);
@@ -77,7 +75,7 @@ export const ProposalExecuteButton = ({ proposal }: Props) => {
     if (isSuccess) {
       toast.success(
         "Proposal Executed. It might take a minute to see the updated status.",
-        { duration: 10000 },
+        { duration: 10000 }
       );
     }
     if (isError) {

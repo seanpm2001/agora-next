@@ -1,7 +1,8 @@
 import {
   ERC20__factory,
   UniswapGovernor__factory,
-  UniswapStaker__factory, UniswapTimelock__factory,
+  UniswapStaker__factory,
+  UniswapTimelock__factory,
 } from "@/lib/contracts/generated";
 import { ITokenContract } from "@/lib/contracts/common/interfaces/ITokenContract";
 import { TenantContract } from "@/lib/tenant/tenantContract";
@@ -17,10 +18,9 @@ interface Props {
 }
 
 export const uniswapTenantContractConfig = ({
-                                              isProd,
-                                              alchemyId,
-                                            }: Props): TenantContracts => {
-
+  isProd,
+  alchemyId,
+}: Props): TenantContracts => {
   const TOKEN = isProd
     ? "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984"
     : "0xc796953c443f542728eedf33aab32753d3f7a91a";
