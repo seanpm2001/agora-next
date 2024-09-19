@@ -5,11 +5,14 @@ import delegateImage from "@/assets/tenant/scroll_delegate.svg";
 import successImage from "@/assets/tenant/scroll_success.svg";
 import pendingImage from "@/assets/tenant/scroll_pending.svg";
 import failedImage from "@/assets/tenant/scroll_failed.svg";
-import infoPageCard01 from "@/assets/tenant/scroll_info_1.png";
 import infoPageCard02 from "@/assets/tenant/scroll_info_2.png";
 import infoPageCard03 from "@/assets/tenant/scroll_info_3.png";
 import infoPageCard04 from "@/assets/tenant/scroll_info_4.png";
-import infoPageHero from "@/assets/tenant/scroll_info_hero.png";
+import infoPageHero from "@/assets/tenant/scroll_hero.jpg";
+import appleTouchIcon from "@/assets/tenant/scroll_favicon/apple-touch-icon.png";
+import favicon32x32 from "@/assets/tenant/scroll_favicon/favicon-32x32.png";
+import favicon16x16 from "@/assets/tenant/scroll_favicon/favicon-16x16.png";
+import shortcutIcon from "@/assets/tenant/scroll_favicon/favicon.ico";
 
 export const scrollTenantUIConfig = new TenantUI({
   title: "Scroll governance",
@@ -45,7 +48,13 @@ export const scrollTenantUIConfig = new TenantUI({
     negative: "255 104 75",
     brandPrimary: "255 104 75",
     brandSecondary: "255 248 243",
-    font: "TransSansPremium",
+  },
+
+  favicon: {
+    "apple-touch-icon": appleTouchIcon.src,
+    icon32x32: favicon32x32.src,
+    icon16x16: favicon16x16.src,
+    "shortcut-icon": shortcutIcon.src,
   },
 
   links: [
@@ -58,46 +67,48 @@ export const scrollTenantUIConfig = new TenantUI({
 
   governanceIssues: [
     {
-      icon: "wrenchScrewdriverIcon",
+      icon: "hammerEmoji",
       title: "Builders",
       key: "builders",
     },
     {
-      icon: "community",
+      icon: "peopleEmoji",
       title: "Community",
       key: "community",
     },
     {
-      icon: "globeAlt",
+      icon: "worldEmoji",
       title: "Decentralization",
       key: "decentralization",
     },
     {
-      icon: "presentationChartLine",
+      icon: "sproutEmoji",
       title: "Sustainability",
       key: "sustainability",
     },
     {
-      icon: "lockClosed",
+      icon: "lockEmoji",
       title: "Privacy",
       key: "privacy",
     },
     {
-      icon: "scale",
+      icon: "scaleEmoji",
       title: "Governance",
       key: "governance",
     },
     {
-      icon: "beaker",
+      icon: "testTubeEmoji",
       title: "Experimentation",
       key: "experimentation",
     },
     {
-      icon: "shieldCheck",
+      icon: "shieldEmoji",
       title: "Security",
       key: "security",
     },
   ],
+
+  hideAgoraBranding: true,
 
   pages: [
     {
@@ -166,12 +177,6 @@ export const scrollTenantUIConfig = new TenantUI({
       },
       links: [
         {
-          name: "Community Discord",
-          title: "Community Discord",
-          url: "https://discord.gg/scroll",
-          image: infoPageCard01,
-        },
-        {
           name: "Governance Forums",
           title: "Governance Forums",
           url: "https://gov.scroll.io/forum",
@@ -208,7 +213,7 @@ export const scrollTenantUIConfig = new TenantUI({
     },
     {
       name: "delegates/delegate",
-      enabled: false,
+      enabled: true,
     },
     {
       name: "delegates/code-of-conduct",

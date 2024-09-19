@@ -1,5 +1,6 @@
 import {
   AgoraGovernor__factory,
+  AgoraToken__factory,
   ERC20__factory,
 } from "@/lib/contracts/generated";
 import { ITokenContract } from "@/lib/contracts/common/interfaces/ITokenContract";
@@ -20,7 +21,8 @@ export const scrollTenantContractConfig = ({
   isProd,
   alchemyId,
 }: Props): TenantContracts => {
-  const TOKEN = ZERO_ADDRESS;
+  const TOKEN = process.env.NEXT_PUBLIC_SCROLL_TOKEN_ADDRESS!;
+
   const GOVERNOR = ZERO_ADDRESS;
   const TREASURY = ZERO_ADDRESS;
 
@@ -45,10 +47,10 @@ export const scrollTenantContractConfig = ({
 
   return {
     token: new TenantContract<ITokenContract>({
-      abi: ERC20__factory.abi,
+      abi: AgoraToken__factory.abi,
       address: TOKEN as `0x${string}`,
       chain,
-      contract: ERC20__factory.connect(TOKEN, provider),
+      contract: AgoraToken__factory.connect(TOKEN, provider),
       provider,
     }),
 

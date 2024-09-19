@@ -73,7 +73,7 @@ export function getHumanBlockTime(
     case 534352:
       const blockSeconds = getSecondsPerBlock();
       const estScrollSecondsDiff =
-        Number(latestBlock.number) - Number(blockNumber) * blockSeconds;
+        (Number(latestBlock.number) - Number(blockNumber)) * blockSeconds;
       return new Date((latestBlock.timestamp - estScrollSecondsDiff) * 1000);
 
     //   Cyber Mainnet
