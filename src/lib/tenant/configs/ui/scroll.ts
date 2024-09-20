@@ -15,7 +15,7 @@ import favicon16x16 from "@/assets/tenant/scroll_favicon/favicon-16x16.png";
 import shortcutIcon from "@/assets/tenant/scroll_favicon/favicon.ico";
 
 export const scrollTenantUIConfig = new TenantUI({
-  title: "Scroll governance",
+  title: "Scroll Governance",
   logo: scrollLogo,
 
   googleAnalytics: "G-SV1E7HY7YZ",
@@ -113,20 +113,20 @@ export const scrollTenantUIConfig = new TenantUI({
   pages: [
     {
       route: "/",
-      title: "Welcome to scroll governance",
+      title: "Welcome to Scroll Governance",
       description:
         "Delegates represent the Scroll ecosystem, guiding governance decisions on behalf of SCR token holders to ensure the platform evolves in line with community priorities.",
       hero: scrollHero,
       meta: {
-        title: "Welcome to Scroll governance",
+        title: "Welcome to Scroll Governance",
         description: "Home of token governance",
-        imageTitle: "Welcome to Scroll governance",
+        imageTitle: "Welcome to Scroll Governance",
         imageDescription: "Home of token governance",
       },
     },
     {
       route: "proposals",
-      title: "Welcome to Scroll governance",
+      title: "Welcome to Scroll Governance",
       description:
         "Scroll delegates are the stewards of Scroll DAO. They are volunteers and members of the Scroll community who have been elected to represent other token holders and make governance decisions on their behalf.",
       hero: scrollHero,
