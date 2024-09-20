@@ -8,9 +8,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ParsedProposalData } from "@/lib/proposalUtils";
-import { keccak256 } from "viem";
-import { toUtf8Bytes } from "ethers";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useExecuteCancel } from "@/app/proposals/components/useExecuteCancel";
@@ -21,19 +18,8 @@ interface Props {
 }
 
 export const ProposalCancelButton = ({ proposal }: Props) => {
-  const { data: adminAddress, canCancel } = useCanCancel();
-
-  const dynamicProposalType: keyof ParsedProposalData =
-    proposal.proposalType as keyof ParsedProposalData;
-  const proposalData =
-    proposal.proposalData as ParsedProposalData[typeof dynamicProposalType]["kind"];
-
-  const { data, write } = useExecuteCancel([
-    "options" in proposalData ? proposalData.options[0].targets : "",
-    "options" in proposalData ? proposalData.options[0].values : "",
-    "options" in proposalData ? proposalData.options[0].calldatas : "",
-    keccak256(toUtf8Bytes(proposal.description!)),
-  ]);
+  const { canCancel, isFetched: isCanCancelFetched } = useCanCancel();
+  const { data, write } = useExecuteCancel({ proposal });
 
   const { isLoading, isSuccess, isError, isFetched, error } =
     useWaitForTransaction({
@@ -44,7 +30,7 @@ export const ProposalCancelButton = ({ proposal }: Props) => {
     if (isSuccess) {
       toast.success(
         "Proposal Cancelled. It might take a minute to see the updated status.",
-        { duration: 10000 }
+        { duration: 5000 }
       );
     }
     if (isError) {
@@ -80,8 +66,7 @@ export const ProposalCancelButton = ({ proposal }: Props) => {
 
           <TooltipContent>
             <div className="flex flex-col gap-1 p-2">
-              <div>Only the admin wallet can cancel proposals:</div>
-              <div className="font-semibold">{adminAddress}</div>
+              <div>Only the admin wallet can cancel proposals.</div>
             </div>
           </TooltipContent>
         </Tooltip>

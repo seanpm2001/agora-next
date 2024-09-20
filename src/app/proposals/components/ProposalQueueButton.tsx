@@ -7,6 +7,7 @@ import { keccak256 } from "viem";
 import { ParsedProposalData } from "@/lib/proposalUtils";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useCanExecute } from "@/app/proposals/components/useCanExecute";
 
 interface Props {
   proposal: Proposal;
@@ -14,6 +15,8 @@ interface Props {
 
 export const ProposalQueueButton = ({ proposal }: Props) => {
   const { contracts } = Tenant.current();
+
+  const { canExecute, isFetched: isCanExecuteFetched } = useCanExecute();
 
   const dynamicProposalType: keyof ParsedProposalData =
     proposal.proposalType as keyof ParsedProposalData;

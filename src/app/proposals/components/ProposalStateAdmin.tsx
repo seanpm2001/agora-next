@@ -15,8 +15,8 @@ interface Props {
 export const ProposalStateAdmin = ({ proposal }: Props) => {
   const { isConnected } = useAccount();
 
-  const { ui } = Tenant.current();
-  const hasProposalLifecycle = Boolean(ui.toggle("proposal-execute")?.enabled);
+  // const { ui } = Tenant.current();
+  // const hasProposalLifecycle = Boolean(ui.toggle("proposal-execute")?.enabled);
 
   const actionableStates: string[] = [
     PROPOSAL_STATUS.ACTIVE,
@@ -27,7 +27,7 @@ export const ProposalStateAdmin = ({ proposal }: Props) => {
 
   if (
     !isConnected ||
-    !hasProposalLifecycle ||
+    // !hasProposalLifecycle ||
     !proposal.status ||
     !actionableStates.includes(proposal.status)
   ) {
